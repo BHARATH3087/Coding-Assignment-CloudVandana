@@ -1,4 +1,18 @@
 # Coding-Assignment-CloudVandana
+------------------> FOR Assignments-main FOLDER <------------------(1)
+The code is deployed in respective folders HTML, Javascript, Java, And I have attached output of code as well
+
+For HTML and Javascript output simply download/pull the code to local system then double click on files, you see the output on browser window
+
+For Java, we need to compile the code then execute, for that follow the steps
+
+open command prompt in path where java file located
+Then use "javac" command to compile java file like "javac fileName.java"
+after running compile command, it will create .class file, Then execute java command to see the code result. command "java className"
+
+
+
+------ > Another Method <----------------(2)
 #CombinedTaks
 1. JAVA
 A. Create an array with the values (1, 2, 3, 4, 5, 6, 7) and shuffle it.
