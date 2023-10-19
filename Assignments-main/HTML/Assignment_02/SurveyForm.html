@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Survey Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            width: 400px;
+            margin: 0 auto;
+            background-color: red;
+        }
+
+        form {
+            background: #f9f9f9;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .field {
+            margin-bottom: 10px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        select {
+            width: 90%;
+            padding: 10px;
+            margin: 5px 0;
+        }
+
+        input[type="checkbox"] {
+            margin-right: 5px;
+        }
+
+        #popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            align-items: center;
+            justify-content: center;
+        }
+
+        #popup-content {
+            background: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+        }
+
+        #submit-btn {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .formbackground{
+            background-color: blue;
+            width: 600px;
+            height: 700px;
+            margin: 0 auto;
+        }
+        h2{
+            color: white;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="formbackground">
+        <h2>Survey Form</h2>
+
+        <div class="container">
+            <form id="surveyForm">
+                <div class="field">
+                    <label for="firstName">First Name:</label>
+                    <input type="text" id="firstName" name="firstName" required>
+                </div>
+                <div class="field">
+                    <label for="lastName">Last Name:</label>
+                    <input type="text" id="lastName" name="lastName" required>
+                </div>
+                <div class="field">
+                    <label for="dob">Date of Birth:</label>
+                    <input type="date" id="dob" name="dob" required>
+                </div>
+                <div class="field">
+                    <label for="country">Country:</label>
+                    <select id="country" name="country" required>
+                        <option value="Canada">Canada</option>
+                        <option value="INDIA">INDIA</option>
+                        <option value="UK">UK</option>
+                        <option value="USA">USA</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label>Gender:</label>
+                    <input type="checkbox" name="gender" value="Male"> Male
+                    <input type="checkbox" name="gender" value="Female"> Female
+                </div>
+                <div class="field">
+                    <label for="profession">Profession:</label>
+                    <input type="text" id="profession" name="profession" required>
+                </div>
+                <div class="field">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="field">
+                    <label for="mobile">Mobile Number:</label>
+                    <input type="tel" id="mobile" name="mobile" required>
+                </div>
+                <div class="field">
+                    <button id="submit-btn" type="button" onclick="submitForm()">Submit</button>
+                    <button type="reset">Reset</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="popup">
+        <div id="popup-content">
+            <h2>Survey Form Submission</h2>
+            <div id="popup-results"></div>
+            <button id="close-popup" onclick="closePopup()">Close</button>
+        </div>
+    </div>
+
+    <script>
+        function submitForm() {
+            const form = document.getElementById("surveyForm");
+            if (form.checkValidity()) {
+                const firstName = document.getElementById("firstName").value;
+                const lastName = document.getElementById("lastName").value;
+                const dob = document.getElementById("dob").value;
+                const country = document.getElementById("country").value;
+                const genderElements = document.getElementsByName("gender");
+                const gender = [...genderElements].filter(checkbox => checkbox.checked).map(checkbox => checkbox.value);
+                const profession = document.getElementById("profession").value;
+                const email = document.getElementById("email").value;
+                const mobile = document.getElementById("mobile").value;
+
+                const results = `
+                    <p><strong>First Name:</strong> ${firstName}</p>
+                    <p><strong>Last Name:</strong> ${lastName}</p>
+                    <p><strong>Date of Birth:</strong> ${dob}</p>
+                    <p><strong>Country:</strong> ${country}</p>
+                    <p><strong>Gender:</strong> ${gender.join(", ")}</p>
+                    <p><strong>Profession:</strong> ${profession}</p>
+                    <p><strong>Email:</strong> ${email}</p>
+                    <p><strong>Mobile Number:</strong> ${mobile}</p>
+                `;
+
+                document.getElementById("popup-results").innerHTML = results;
+                document.getElementById("popup").style.display = "block";
+                form.reset();
+            } else {
+                alert("Please fill in all the required fields.");
+            }
+        }
+
+        function closePopup() {
+            document.getElementById("popup").style.display = "none";
+        }
+    </script>
+</body>
+</html>
