@@ -34,7 +34,7 @@ B. Perform sorting of an array in descending order.
 A. Create a basic calculator using HTML, CSS, and JavaScript with the functionality of add,
 subtract, multiply and divide. Use the following picture for reference.
 
-#form
+#form   
 
 4.B. Create a survey form with Fields; First Name, Last Name, Date of Birth, Country (dropdown),
 Gender (checkbox), Profession, email, and mobile number. All the input fields are
